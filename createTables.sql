@@ -6,7 +6,7 @@ CREATE TABLE Location(
 	PRIMARY KEY (location_ID)
 );
 
-CREATE TABLE User(
+CREATE TABLE FB_User(
 	user_ID VARCHAR2(100),
 	first_name VARCHAR2(100),
 	last_name VARCHAR2(100),
@@ -35,7 +35,7 @@ CREATE TABLE Event(
 	Event_end_time TIMESTAMP(6),
 	Event_location VARCHAR2(100),
     PRIMARY KEY (Event_ID),
-    FOREIGN KEY (Event_creator_ID) REFERENCES User,
+    FOREIGN KEY (Event_creator_ID) REFERENCES FB_User,
     FOREIGN KEY (Event_location_ID) REFERENCES Location
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE Participate(
 	confirmation VARCHAR2(100),
 	PRIMARY KEY (Event_ID, user_ID),
 	FOREIGN KEY (Event_ID) REFERENCES Event,
-	FOREIGN Key (user_ID) REFERENCES User
+	FOREIGN Key (user_ID) REFERENCES FB_User
 );
 
 CREATE TABLE Education_program(
@@ -60,7 +60,7 @@ CREATE TABLE Attended_program(
 	user_ID VARCHAR2(100),
 	program_ID INTEGER,
 	PRIMARY KEY (user_ID, program_ID),
-	FOREIGN KEY (user_ID) REFERENCES User,
+	FOREIGN KEY (user_ID) REFERENCES FB_User,
 	FOREIGN KEY (program_ID) REFERENCES Education_program,
 );
 
@@ -71,16 +71,16 @@ CREATE TABLE Message(
 	sender_ID VARCHAR2(100),
 	receiver_ID VARCHAR2(100),
 	PRIMARY KEY (message_ID),
-	FOREIGN KEY (sender_ID) REFERENCES User,
-	FOREIGN KEY (receiver_ID) REFERENCES User
+	FOREIGN KEY (sender_ID) REFERENCES FB_User,
+	FOREIGN KEY (receiver_ID) REFERENCES FB_User
 );
 
 
 CREATE TABLE Friendship(
 	user1_ID VARCHAR2(100),
 	user2_ID VARCHAR2(100),
-	FOREIGN KEY (user1_ID) REFERENCES User,
-	FOREIGN KEY (user2_ID) REFERENCES User
+	FOREIGN KEY (user1_ID) REFERENCES FB_User,
+	FOREIGN KEY (user2_ID) REFERENCES FB_User
 );
 
 CREATE TABLE Photo(
@@ -105,7 +105,7 @@ CREATE TABLE Album(
 	album_visibility VARCHAR2(100),
 	PRIMARY Key (album_ID),
 	FOREIGN Key (cover_photo_ID) REFERENCES Photo,
-	FOREIGN Key (owner_user_ID) REFERENCES User
+	FOREIGN Key (owner_user_ID) REFERENCES FB_User
 );
 
 CREATE TABLE Tag(
@@ -116,5 +116,5 @@ CREATE TABLE Tag(
 	tag_created_time TIMESTAMP(6),
 	PRIMARY Key (photo_ID, user_ID),
 	FOREIGN Key (photo_ID) REFERENCES Photo,
-	FOREIGN Key (user_ID) REFERENCES User,
+	FOREIGN Key (user_ID) REFERENCES FB_User,
 );
