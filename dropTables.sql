@@ -1,0 +1,11 @@
+DROP TABLE Location;
+DROP TABLE FB_User;
+DROP TABLE Event;
+DROP TABLE Participate;
+DROP TABLE Eduation_program;
+DROP TABLE Attended_program;
+DROP TABLE Message;
+DROP TABLE Friendship;
+DROP TABLE Photo;
+DROP TABLE Album;
+DROP TABLE Tag;
