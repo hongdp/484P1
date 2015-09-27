@@ -4,7 +4,7 @@ CREATE TABLE Location(
 	state VARCHAR2(100),
 	country VARCHAR2(100),
 	PRIMARY KEY (location_ID)
-)
+);
 
 CREATE TABLE User(
 	user_ID VARCHAR2(100),
@@ -19,7 +19,7 @@ CREATE TABLE User(
 	PRIMARY KEY (user_ID),
 	FOREIGN KEY (home_town_ID) REFERENCES Location,
 	FOREIGN KEY (current_location_ID) REFERENCES Location,
-)
+);
 
 CREATE TABLE Event(
 	Event_ID VARCHAR2(100),
@@ -37,7 +37,7 @@ CREATE TABLE Event(
     PRIMARY KEY (Event_ID),
     FOREIGN KEY (Event_creator_ID) REFERENCES User,
     FOREIGN KEY (Event_location_ID) REFERENCES Location
-)
+);
 
 CREATE TABLE Participate(
 	Event_ID VARCHAR2(100),
@@ -46,7 +46,7 @@ CREATE TABLE Participate(
 	PRIMARY KEY (Event_ID, user_ID),
 	FOREIGN KEY (Event_ID) REFERENCES Event,
 	FOREIGN Key (user_ID) REFERENCES User
-)
+);
 
 CREATE TABLE Education_program(
 	program_ID INTEGER,
@@ -54,7 +54,7 @@ CREATE TABLE Education_program(
 	concentration VARCHAR2(100),
 	degree VARCHAR2(100),
 	PRIMARY KEY (program_ID)
-)
+);
 
 CREATE TABLE Attended_program(
 	user_ID VARCHAR2(100),
@@ -62,7 +62,7 @@ CREATE TABLE Attended_program(
 	PRIMARY KEY (user_ID, program_ID),
 	FOREIGN KEY (user_ID) REFERENCES User,
 	FOREIGN KEY (program_ID) REFERENCES Education_program,
-)
+);
 
 CREATE TABLE Message(
 	message_ID INTEGER,
@@ -73,7 +73,7 @@ CREATE TABLE Message(
 	PRIMARY KEY (message_ID),
 	FOREIGN KEY (sender_ID) REFERENCES User,
 	FOREIGN KEY (receiver_ID) REFERENCES User
-)
+);
 
 
 CREATE TABLE Friendship(
@@ -81,7 +81,7 @@ CREATE TABLE Friendship(
 	user2_ID VARCHAR2(100),
 	FOREIGN KEY (user1_ID) REFERENCES User,
 	FOREIGN KEY (user2_ID) REFERENCES User
-)
+);
 
 CREATE TABLE Photo(
 	photo_ID VARCHAR2(100),
@@ -92,7 +92,7 @@ CREATE TABLE Photo(
 	photo_linke VARCHAR2(2000)
 	PRIMARY KEY (photo_ID),
 	FOREIGN KEY (album_ID) REFERENCES Album
-)
+);
 
 CREATE TABLE Album(
 	album_ID VARCHAR2(100),
@@ -106,7 +106,7 @@ CREATE TABLE Album(
 	PRIMARY Key (album_ID),
 	FOREIGN Key (cover_photo_ID) REFERENCES Photo,
 	FOREIGN Key (owner_user_ID) REFERENCES User
-)
+);
 
 CREATE TABLE Tag(
 	photo_ID VARCHAR2(100),
@@ -117,4 +117,4 @@ CREATE TABLE Tag(
 	PRIMARY Key (photo_ID, user_ID),
 	FOREIGN Key (photo_ID) REFERENCES Photo,
 	FOREIGN Key (user_ID) REFERENCES User,
-)
+);
