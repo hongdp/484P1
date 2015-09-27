@@ -117,5 +117,5 @@ CREATE TABLE Tag(
 	tag_created_time TIMESTAMP(6),
 	PRIMARY Key (photo_ID, user_ID),
 	FOREIGN Key (photo_ID) REFERENCES Photo,
-	FOREIGN Key (user_ID) REFERENCES FB_User,
+	FOREIGN Key (user_ID) REFERENCES FB_User
 );
