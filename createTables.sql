@@ -61,7 +61,7 @@ CREATE TABLE Attended_program(
 	program_ID INTEGER,
 	PRIMARY KEY (user_ID, program_ID),
 	FOREIGN KEY (user_ID) REFERENCES FB_User,
-	FOREIGN KEY (program_ID) REFERENCES Education_program,
+	FOREIGN KEY (program_ID) REFERENCES Education_program
 );
 
 CREATE TABLE Message(
@@ -90,8 +90,7 @@ CREATE TABLE Photo(
 	photo_created_time TIMESTAMP(6),
 	photo_modified_time TIMESTAMP(6),
 	photo_linke VARCHAR2(2000),
-	PRIMARY KEY (photo_ID),
-	FOREIGN KEY (album_ID) REFERENCES Album
+	PRIMARY KEY (photo_ID)
 );
 
 CREATE TABLE Album(
@@ -107,6 +106,8 @@ CREATE TABLE Album(
 	FOREIGN Key (cover_photo_ID) REFERENCES Photo,
 	FOREIGN Key (owner_user_ID) REFERENCES FB_User
 );
+
+ALTER TABLE Photo ADD FOREIGN KEY (album_ID) REFERENCES Album;
 
 CREATE TABLE Tag(
 	photo_ID VARCHAR2(100),
