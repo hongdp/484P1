@@ -129,6 +129,7 @@ BEGIN
 		temp := :NEW.user1_ID;
 		:NEW.user1_ID := :NEW.user2_ID;
 		:NEW.user2_ID := temp;
+	END IF;
 END;
 .
 Run;
