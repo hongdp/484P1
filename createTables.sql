@@ -126,9 +126,9 @@ DECLARE
 	temp VARCHAR2(100);
 BEGIN
 	IF NEW.user1_ID > NEW.user2_ID THEN
-		:temp := :NEW.user1_ID;
+		temp := :NEW.user1_ID;
 		:NEW.user1_ID := :NEW.user2_ID;
-		:NEW.user2_ID := :temp;
+		:NEW.user2_ID := temp;
 END;
 .
 Run;
