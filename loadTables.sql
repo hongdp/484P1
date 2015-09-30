@@ -11,7 +11,6 @@ FROM (
 	FROM keykholt.PUBLIC_EVENT_INFORMATION)
 	;
 
-
 INSERT INTO Education_program(institution_name, concentration, degree)
 SELECT DISTINCT institution_name, program_concentration, program_degree
 FROM keykholt.PUBLIC_USER_INFORMATION;
