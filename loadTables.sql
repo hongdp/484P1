@@ -34,9 +34,8 @@ FROM keykholt.PUBLIC_USER_INFORMATION u, Education_program e
 WHERE u.institution_name=e.institution_name and u.program_concentration=e.concentration and u.program_degree=e.degree;
 
 INSERT INTO Friendship(user1_ID, user2_ID)
-SELECT DISTINCT u1.user_ID, u2.user_ID
-FROM keykholt.PUBLIC_ARE_FRIENDS f, FB_USER u1, FB_USER u2
-WHERE f.user1_ID=u1.user_ID and f.user2_ID=u2.user_ID;
+SELECT DISTINCT f.user1_ID, f.user2_ID
+FROM keykholt.PUBLIC_ARE_FRIENDS f;
 
 INSERT INTO Photo(photo_ID, album_ID, photo_caption, photo_created_time, photo_modified_time, photo_link)
 SELECT DISTINCT PHOTO_ID, ALBUM_ID, PHOTO_CAPTION, PHOTO_CREATED_TIME, PHOTO_MODIFIED_TIME, PHOTO_LINK
