@@ -114,7 +114,7 @@ CREATE TABLE Photo(
 	photo_caption VARCHAR2(2000),
 	photo_created_time TIMESTAMP(6) NOT NULL,
 	photo_modified_time TIMESTAMP(6) NOT NULL,
-	photo_linke VARCHAR2(2000) NOT NULL,
+	photo_link VARCHAR2(2000) NOT NULL,
 	PRIMARY KEY (photo_ID)
 );
 
