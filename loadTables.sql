@@ -1,12 +1,16 @@
 INSERT INTO Location(CITY,STATE,COUNTRY)
-SELECT DISTINCT hometown_city,hometown_state,hometown_country
-FROM keykholt.PUBLIC_USER_INFORMATION;
-UNION
-SELECT DISTINCT current_city,current_state,hometown_country
-FROM keykholt.PUBLIC_USER_INFORMATION;
-UNION
-SELECT DISTINCT event_city,event_state,event_country
-FROM keykholt.PUBLIC_EVENT_INFORMATION;
+SELECT DISTINCT city, state, country
+FROM(
+	SELECT hometown_city as city, hometown_state as state, hometown_country as country
+	FROM keykholt.PUBLIC_USER_INFORMATION;
+	UNION
+	SELECT DISTINCT current_city as city, current_state as state, hometown_country as country
+	FROM keykholt.PUBLIC_USER_INFORMATION;
+	UNION
+	SELECT DISTINCT event_city as city, event_state as state, event_country as country
+	FROM keykholt.PUBLIC_EVENT_INFORMATION;
+)
+
 
 INSERT INTO Education_program(institution_name, concentration, degree)
 SELECT DISTINCT institution_name, program_concentration, program_degree
@@ -24,3 +28,4 @@ SELECT DISTINCT e.Event_ID, e.Event_creator_ID, l.location_ID, e.Event_host, e.E
 	e.Event_type, e.Event_subtype, e.Event_start_time, e.Event_end_time, e.Event_location
 FROM keykholt.PUBLIC_EVENT_INFORMATION e, Location l
 WHERE e.EVENT_CITY=l.CITY AND e.EVENT_STATE=l.STATE AND e.EVENT_COUNTRY=l.COUNTRY;
+
