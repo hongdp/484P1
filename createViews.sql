@@ -115,7 +115,7 @@ SELECT photo_ID PHOTO_ID,
 	tag_created_time TAG_CREATED_TIME,
 	tag_x_coordinate TAG_X_COORDINATE,
 	tag_y_coordinate TAG_Y_COORDINATE
-FROM Tag
+FROM Tag;
 
 INSERT INTO VIEW_EVENT_INFORMATION
 SELECT e.Event_ID EVENT_ID,
@@ -134,4 +134,4 @@ SELECT e.Event_ID EVENT_ID,
 	e.Event_end_time EVENT_END_TIME
 FROM Event e
 LEFT JOIN Location l
-ON e.Event_location_ID = l.location_ID
+ON e.Event_location_ID = l.location_ID;
